@@ -1,8 +1,12 @@
-//
+/*
     This code and expanation is contributed by
                                        DEBOSMIT NEOGI
-                                                        //
-                                                    
+                                                        */
+
+
+/*
+	EXPALNATION ~
+			*/
 Suppose original array was: [1,2,3,4,5]
 After rotation array was:   [4,5,1,2,3]
 
@@ -15,6 +19,12 @@ After rotation array was:   [4,5,1,2,3]
 |-----------------------------------
 [start->s]                          [end->e]  WE WILL BE USING BINARY SEARCH TO FIND A VALUE (KEY) IN ROTATED AND SORTED ARRAY  
 
+
+
+
+/*
+	CODE ~
+			*/
 
 
 #include <iostream>
