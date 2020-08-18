@@ -1,0 +1,76 @@
+//
+    This code and expanation is contributed by
+                                       DEBOSMIT NEOGI
+                                                        //
+                                                    
+Suppose original array was: [1,2,3,4,5]
+After rotation array was:   [4,5,1,2,3]
+
+|
+|   /[fragment 1]-->[4,5]
+|  /       / [fragment 2] -->[1,2,3]
+| /       /
+|/       /
+|       /
+|-----------------------------------
+[start->s]                          [end->e]  WE WILL BE USING BINARY SEARCH TO FIND A VALUE (KEY) IN ROTATED AND SORTED ARRAY  
+
+
+
+#include <iostream>
+using namespace std;
+
+int search_rotated(int a[],int n,int key){
+	int s=0;
+	int e=n-1;
+	while(s<=e){
+		int mid=s+(e-s)/2;
+		if(a[mid]==key)
+			return mid;
+
+		// mid is present in 1st fragment
+		else if(a[mid]>=a[s]){
+
+			// key present in 1st part
+			if(key>=a[s] and key<a[mid])
+				e=mid-1;
+
+			//key present in 2nd part
+			else
+				s=mid+1;
+		}
+
+		// mid is present in 2nd fragment
+		else {
+
+			//key is present in 1st part
+			if(key>a[mid] and key<=a[e])
+				s=mid+1;
+
+			// key is present in 2nd part
+			else
+				e=mid-1;
+		}
+	}
+	return -1; //if key is absent
+}
+
+
+int main(){
+
+  #ifndef ONLINE_JUDGE
+	  freopen("input.txt","r",stdin);
+	  freopen("output1.txt","w",stdout);
+  #endif
+
+	  int n;
+	  cin>>n;
+	  int a[n];
+	  for(int i=0;i<n;i++){
+	  	cin>>a[i];
+	  }
+	  int key;
+	  cin>>key;
+	  cout<<"index of key: "<<search_rotated(a,n,key)<<endl;
+	return 0;
+}
